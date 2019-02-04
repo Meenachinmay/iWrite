@@ -16,7 +16,7 @@
 Route::get('/', 'PublicController@index')->name('index');
 
 // Single Post view route
-Route::get('post/{id}', 'PublicController@singlePost')->name('singlePost');
+Route::get('post/{post}', 'PublicController@singlePost')->name('singlePost');
 
 // contact view route
 Route::get('contact', 'PublicController@contact')->name('contact');
@@ -31,7 +31,26 @@ Auth::routes();
 // dashboard routes for HomeController
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
+// user route group
+Route::prefix('user')->group(function(){
+    Route::get('dashboard', 'UserController@dashboard')->name('userDashboard');
+    Route::get('comments', 'UserController@comments')->name('userComments');
+    Route::post('comment/{id}/delete', 'UserController@deleteComment')->name('deleteComment');
+    Route::get('profile', 'UserController@profile')->name('userProfile');
+    Route::post('profile', 'UserController@profilePost')->name('userProfilePost');
+});
+
+// author route group
+Route::prefix('author')->group(function(){
+    Route::get('dashboard', 'AuthorController@dashboard')->name('authorDashboard');
+    Route::get('posts', 'AuthorController@posts')->name('authorPosts');
+    Route::get('comments', 'AuthorController@comments')->name('authorComments');
+});
+
 // admin route group
 Route::prefix('admin')->group(function (){
     Route::get('/dashboard', 'AdminController@dashboard')->name('adminDashboard');
+    Route::get('/posts', 'AdminController@posts')->name('adminPosts');
+    Route::get('/comments', 'AdminController@comments')->name('adminComments');
+    Route::get('/users', 'AdminController@users')->name('adminUsers');
 });
