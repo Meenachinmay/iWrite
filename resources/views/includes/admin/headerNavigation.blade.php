@@ -10,12 +10,18 @@
             <button class="app-search__button"><i class="fa fa-search"></i></button>
         </li> -->
         <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown"
+        @if(Auth::user()->author == true)
+        <li class="dropdown">
+            <a href="{{ route('newPost') }}" class="btn btn-info btn-sm mt-3 mr-1">New Post</a>
+        </li>
+        @endif
+        <li class="dropdown">
+            <a class="app-nav__item" href="#" data-toggle="dropdown"
                                 aria-label="Open Profile Menu"><img class="app-sidebar__user-avatar"
-                                                                    src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+                                                                    src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"
                                                                     width="30px" height="30px" alt="User Image">{{ Auth::user()->name }}</a>
             <ul class="dropdown-menu settings-menu dropdown-menu-right">
-                <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="{{ route('userProfile') }}"><i class="fa fa-user fa-lg"></i> Profile</a></li>
                 <form method="POST" id="logout-form" action="{{ route ('logout') }}">@csrf</form>
                 <li><a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">
                         <i class="fa fa-sign-out fa-lg"></i> Logout</a></li>

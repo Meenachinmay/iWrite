@@ -74,7 +74,11 @@
 
 <!-- Custom scripts for this template -->
 <script src="{{asset('assets/js/clean-blog.min.js')}}"></script>
-
+<script>
+    $(".alert").delay(1000).slideUp(200, function() {
+        $(this).alert('close');
+    });
+</script>
 </body>
 
 </html>

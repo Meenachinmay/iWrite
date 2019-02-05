@@ -29,7 +29,7 @@
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-reddit-alien fa-3x"></i>
                     <div class="info">
                         <h5 class="font-weight-normal">Posted Today</h5>
-                        <p><b>5</b></p>
+                        <p><b>{{ Auth::user()->postsToday->count() }}</b></p>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                 <div class="widget-small info coloured-icon"><i class="icon fa fa-book fa-3x"></i>
                     <div class="info">
                         <h5 class="font-weight-normal">Total Post</h5>
-                        <p><b>25</b></p>
+                        <p><b>{{ Auth::user()->posts->count() }}</b></p>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <div class="widget-small primary coloured-icon"><i class="icon fa fa-comments-o fa-3x"></i>
                     <div class="info">
                         <h5 class="font-weight-normal">Commented Today</h5>
-                        <p><b>{{ Auth::user()->comments->count() }}</b></p>
+                        <p><b>{{ $todayComments->count() }}</b></p>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
 
                         <!-- card header -->
                         <div class="card-header">
-                            Comments by Days
+                            Posts by Days
                         </div>
 
                         <!-- card body start -->

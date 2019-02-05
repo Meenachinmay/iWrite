@@ -79,8 +79,8 @@
                         </div>
 
                         <!-- card body start -->
-                        <div class="card-body">
-
+                        <div class="card-body" style="75%;">
+                            {!! $chart->container() !!}
                         </div>
 
                     </div>
@@ -92,4 +92,5 @@
         </div>
 
     </main>
+{!! $chart->script() !!}
 @endsection

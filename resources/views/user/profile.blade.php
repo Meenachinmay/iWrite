@@ -11,7 +11,11 @@
                 <div class="profile">
                     <div class="info"><img class="user-img" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
                         <h4>{{ Auth::user()->name }}</h4>
-                        <p>FrontEnd Developer</p>
+
+                        @if(Auth::user()->admin == true)
+                            <p>FrontEnd Developer</p>
+                        @endif
+
                     </div>
                     <div class="cover-image"></div>
                 </div>
@@ -28,6 +32,8 @@
                             <!-- form starts from here-->
                             <form class="login-form" method="POST" action="{{ route('userProfilePost') }}">
                                 @csrf
+                                @include('includes.Session_errors')
+                                @include('includes.Session_success')
                                 @include('includes.errors')
                                 <div class="row mb-4">
                                     <!-- First name form here -->
@@ -66,7 +72,7 @@
 
                                     <div class="col-md-6 mb-4">
                                         <label>Confirmed New Password</label>
-                                        <input name="new_password_confirmed" class="form-control" type="password">
+                                        <input name="new_password_confirmation" class="form-control" type="password">
                                     </div>
 
                                 </div>

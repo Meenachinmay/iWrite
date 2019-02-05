@@ -30,6 +30,7 @@
 
         <!-- comments section -->
         <div class="row">
+
             <div class="col-lg-10 col-md-10 mx-auto">
                 <hr>
                 <h2>Comments</h2>
@@ -40,7 +41,31 @@
                     <hr>
                 @endforeach
             </div>
+
         </div>
+
+        <!-- make comment box-->
+        <div class="row">
+
+            <div class="col-lg-10 col-md-10 mx-auto">
+
+                @if(Auth::check())
+                    <form action="{{ route('newComment') }}" method="POST">
+                        @csrf
+                        <div class="form-gruop">
+                            <textarea class="form-control" placeholder="Comment..." name="comment" id="" cols="10" rows="3"></textarea>
+                            <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary mt-3" type="submit">Comment</button>
+                        </div>
+
+                    </form>
+                @endif
+
+            </div>
+        </div>
+
     </div>
 </article>
 
